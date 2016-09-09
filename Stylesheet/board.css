@@ -1,0 +1,113 @@
+body {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+  	display: -webkit-box;
+	-webkit-box-pack: center;
+	-webkit-box-align: center;
+}
+
+.board{
+  display: flex;
+  flex-direction: column;
+  height
+}
+
+h1{
+  text-align: center;
+}
+.row{
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  width: 100%;
+  height: 30px;
+}
+.panel{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+}
+
+.button{
+  background: aqua;
+  font-size: 15px;
+  cursor: pointer;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 2px 6px 2px 6px;
+  border-radius: 5px;
+}
+.score{
+  display: flex;
+  align-items: center;
+  background: red;
+  color: white;
+  padding: 0px 8px 0px 8px;
+  height: 25px;
+  align-self: center;
+  border-radius: 5px;
+}
+
+.tile-concealed, .tile-revealed{
+  height: 100%;
+  width: 30px;
+  border: 0.5px solid black;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tile-concealed{
+  background: gray;
+}
+.tile-revealed{
+  background: white;
+  font-weight: 600;
+}
+
+.tile-concealed:hover{
+  background: white;
+}
+
+.tile-concealed{
+  box-shadow: 0px 0px 6px black;
+}
+.bomb{
+  height: 100%;
+  width: 100%;
+}
+.one{
+  color: blue;
+}
+
+.two{
+  color: green;
+}
+
+.three{
+  color: red;
+}
+
+.four{
+  color: #040488;
+}
+
+.five{
+  color: brown;
+}
+
+.six{
+  color: cyan;
+}
+
+.seven{
+  color: black;
+}
+
+.eight{
+  color: gray;
+}
