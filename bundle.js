@@ -21679,6 +21679,12 @@
 	          { className: 'score' },
 	          'Safe Spaces Left: ',
 	          this.state.spacesLeft
+	        ),
+	        React.createElement(
+	          'div',
+	          { className: 'score' },
+	          '#Mines = ',
+	          this.props.numberOfBombs
 	        )
 	      ),
 	      rows

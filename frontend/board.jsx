@@ -171,6 +171,7 @@ var Board = React.createClass({
           <div className='button' onClick={this.props.makeMedium}>Medium</div>
           <div className='button' onClick={this.props.makeEasy}>Easy</div>
           <div className='score'>Safe Spaces Left: {this.state.spacesLeft}</div>
+          <div className='score'>#Mines = {this.props.numberOfBombs}</div>
         </div>
         {rows}
       </div>
