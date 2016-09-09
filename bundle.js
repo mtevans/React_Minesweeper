@@ -21573,6 +21573,10 @@
 	    } else {
 	      this.state.spacesLeft -= 1;
 	    }
+	    if (this.state.spacesLeft === 0) {
+	      board = this.revealBoard(board);
+	      this.props.checkWin(this.state.spacesLeft);
+	    }
 	    this.setState({ rows: board });
 	  },
 	  validPos: function validPos(pos) {
@@ -21638,7 +21642,7 @@
 	  },
 	  render: function render() {
 	    var rows = this.drawRows();
-	    this.props.checkWin(this.state.spacesLeft);
+	
 	    return React.createElement(
 	      'div',
 	      { className: 'board' },
