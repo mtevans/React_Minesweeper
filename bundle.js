@@ -21564,6 +21564,7 @@
 	    board[target.x][target.y].revealed = true;
 	
 	    if (target.hasBomb) {
+	      board = this.revealBoard(board);
 	      this.props.gameOver();
 	      this.setState({ rows: board });
 	    } else if (target.bombCount === 0) {
@@ -21618,6 +21619,14 @@
 	      rows: newBoard,
 	      spacesLeft: this.props.rowCount * this.props.colCount - this.props.numberOfBombs
 	    });
+	  },
+	  revealBoard: function revealBoard(board) {
+	    for (var i = 0; i < board.length; i++) {
+	      for (var j = 0; j < board[i].length; j++) {
+	        board[i][j].revealed = true;
+	      }
+	    }
+	    return board;
 	  },
 	  drawRows: function drawRows() {
 	    var _this2 = this;
