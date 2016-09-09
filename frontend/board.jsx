@@ -86,6 +86,10 @@ var Board = React.createClass({
     } else {
       this.state.spacesLeft -= 1
     }
+    if (this.state.spacesLeft === 0){
+      board = this.revealBoard(board)
+      this.props.checkWin(this.state.spacesLeft)
+    }
     this.setState({rows: board})
   },
 
@@ -157,7 +161,7 @@ var Board = React.createClass({
 
   render(){
     var rows = this.drawRows()
-    this.props.checkWin(this.state.spacesLeft)
+
     return(
       <div className='board'>
         <h1>Minesweeper</h1>
@@ -167,6 +171,7 @@ var Board = React.createClass({
           <div className='button' onClick={this.props.makeMedium}>Medium</div>
           <div className='button' onClick={this.props.makeEasy}>Easy</div>
           <div className='score'>Safe Spaces Left: {this.state.spacesLeft}</div>
+          <div className='score'>#Mines = {this.props.numberOfBombs}</div>
         </div>
         {rows}
       </div>
