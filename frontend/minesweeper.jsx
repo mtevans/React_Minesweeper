@@ -10,7 +10,7 @@ var Minesweeper = React.createClass({
     }
   },
 
-  makeLarge(){
+  makeHard(){
     this.setState({
       numRows: 16,
       numCols: 30,
@@ -48,7 +48,7 @@ var Minesweeper = React.createClass({
     return(
       <Board gameOver={this.gameOver} rowCount={this.state.numRows}
         colCount={this.state.numCols} numberOfBombs={this.state.numberOfBombs}
-        checkWin={this.checkWin} makeLarge={this.makeLarge} makeMedium={this.makeMedium}
+        checkWin={this.checkWin} makeHard={this.makeHard} makeMedium={this.makeMedium}
         makeEasy={this.makeEasy}/>
     )
   }

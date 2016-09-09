@@ -75,15 +75,14 @@ var Board = React.createClass({
 
     board[target.x][target.y].revealed = true
 
-
-    if (target.hasBomb){
+    if (target.hasBomb){ //reveal the board, show gameOver
       board = this.revealBoard(board)
       this.props.gameOver()
       this.setState({rows: board})
-    } else if (target.bombCount === 0) {
+    } else if (target.bombCount === 0) { //trigger expansion algorithm, and decrement freespaces
       board = this.triggerExpansion(target)
       this.state.spacesLeft -= 1
-    } else {
+    } else { //it's a normal tile, decrement freespaces
       this.state.spacesLeft -= 1
     }
     if (this.state.spacesLeft === 0){
@@ -107,12 +106,13 @@ var Board = React.createClass({
   triggerExpansion(target){
     var targetNeighbours = [[-1,0], [-1,-1], [-1,1], [0,-1], [0,1], [1,-1], [1,0], [1,1]]
     var targetPosition = [target.x, target.y]
-    var stack = [targetPosition]
     var board = this.state.rows
+    var stack = [targetPosition]
+
       while(stack.length > 0){
         let position = stack.pop()
-        let x = parseInt(position[0])
-        let y = parseInt(position[1])
+        let x = position[0]
+        let y = position[1]
 
         for (var i = 0; i < targetNeighbours.length; i++) {
           let newX = targetNeighbours[i][0] + x
@@ -167,7 +167,7 @@ var Board = React.createClass({
         <h1>Minesweeper</h1>
         <div className='panel'>
           <div className='button' onClick={this._reset}>Reset Game</div>
-          <div className='button' onClick={this.props.makeLarge}>Hard</div>
+          <div className='button' onClick={this.props.makeHard}>Hard</div>
           <div className='button' onClick={this.props.makeMedium}>Medium</div>
           <div className='button' onClick={this.props.makeEasy}>Easy</div>
           <div className='score'>Safe Spaces Left: {this.state.spacesLeft}</div>

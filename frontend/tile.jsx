@@ -31,13 +31,13 @@ var Tile = React.createClass({
   },
 
   handleContent(){
-    if(this.state.revealed && this.state.hasBomb){
+    if(this.state.revealed && this.state.hasBomb){ //if it's revealed and it's a bomb show the bomb
       return (<img className='bomb' src='./images/bomb.png'/>)
-    } else if (this.state.revealed && this.state.bombCount === 0){
+    } else if (this.state.revealed && this.state.bombCount === 0){ //if it's revealed and it's empty show nothing
       return ""
-    } else if (this.state.revealed){
+    } else if (this.state.revealed){//if it's revealed and not empty show the count
       return this.state.bombCount
-    } else {
+    } else { //it's not revealed, show nothing.
       return ""
     }
   },

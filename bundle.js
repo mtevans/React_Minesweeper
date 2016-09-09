@@ -21443,7 +21443,7 @@
 	      numberOfBombs: 10
 	    };
 	  },
-	  makeLarge: function makeLarge() {
+	  makeHard: function makeHard() {
 	    this.setState({
 	      numRows: 16,
 	      numCols: 30,
@@ -21475,7 +21475,7 @@
 	  render: function render() {
 	    return React.createElement(Board, { gameOver: this.gameOver, rowCount: this.state.numRows,
 	      colCount: this.state.numCols, numberOfBombs: this.state.numberOfBombs,
-	      checkWin: this.checkWin, makeLarge: this.makeLarge, makeMedium: this.makeMedium,
+	      checkWin: this.checkWin, makeHard: this.makeHard, makeMedium: this.makeMedium,
 	      makeEasy: this.makeEasy });
 	  }
 	});
@@ -21564,13 +21564,16 @@
 	    board[target.x][target.y].revealed = true;
 	
 	    if (target.hasBomb) {
+	      //reveal the board, show gameOver
 	      board = this.revealBoard(board);
 	      this.props.gameOver();
 	      this.setState({ rows: board });
 	    } else if (target.bombCount === 0) {
+	      //trigger expansion algorithm, and decrement freespaces
 	      board = this.triggerExpansion(target);
 	      this.state.spacesLeft -= 1;
 	    } else {
+	      //it's a normal tile, decrement freespaces
 	      this.state.spacesLeft -= 1;
 	    }
 	    if (this.state.spacesLeft === 0) {
@@ -21591,12 +21594,13 @@
 	  triggerExpansion: function triggerExpansion(target) {
 	    var targetNeighbours = [[-1, 0], [-1, -1], [-1, 1], [0, -1], [0, 1], [1, -1], [1, 0], [1, 1]];
 	    var targetPosition = [target.x, target.y];
-	    var stack = [targetPosition];
 	    var board = this.state.rows;
+	    var stack = [targetPosition];
+	
 	    while (stack.length > 0) {
 	      var position = stack.pop();
-	      var x = parseInt(position[0]);
-	      var y = parseInt(position[1]);
+	      var x = position[0];
+	      var y = position[1];
 	
 	      for (var i = 0; i < targetNeighbours.length; i++) {
 	        var newX = targetNeighbours[i][0] + x;
@@ -21661,7 +21665,7 @@
 	        ),
 	        React.createElement(
 	          'div',
-	          { className: 'button', onClick: this.props.makeLarge },
+	          { className: 'button', onClick: this.props.makeHard },
 	          'Hard'
 	        ),
 	        React.createElement(
@@ -21774,12 +21778,16 @@
 	  },
 	  handleContent: function handleContent() {
 	    if (this.state.revealed && this.state.hasBomb) {
+	      //if it's revealed and it's a bomb show the bomb
 	      return React.createElement('img', { className: 'bomb', src: './images/bomb.png' });
 	    } else if (this.state.revealed && this.state.bombCount === 0) {
+	      //if it's revealed and it's empty show nothing
 	      return "";
 	    } else if (this.state.revealed) {
+	      //if it's revealed and not empty show the count
 	      return this.state.bombCount;
 	    } else {
+	      //it's not revealed, show nothing.
 	      return "";
 	    }
 	  },
