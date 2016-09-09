@@ -6,12 +6,8 @@ var Minesweeper = React.createClass({
     return {
       numRows: 8,
       numCols: 8,
-      numberOfBombs: 10,
+      numberOfBombs: 10
     }
-  },
-
-  gameOver(){
-    alert("You Hit A Mine!! You LOSE");
   },
 
   makeLarge(){
@@ -42,6 +38,10 @@ var Minesweeper = React.createClass({
     if(spacesLeft === 0){
       alert("You Win!!")
     }
+  },
+
+  gameOver(){
+    alert("You Hit A Mine!! You LOSE");
   },
 
   render(){

@@ -21443,9 +21443,6 @@
 	      numberOfBombs: 10
 	    };
 	  },
-	  gameOver: function gameOver() {
-	    alert("You Hit A Mine!! You LOSE");
-	  },
 	  makeLarge: function makeLarge() {
 	    this.setState({
 	      numRows: 16,
@@ -21471,6 +21468,9 @@
 	    if (spacesLeft === 0) {
 	      alert("You Win!!");
 	    }
+	  },
+	  gameOver: function gameOver() {
+	    alert("You Hit A Mine!! You LOSE");
 	  },
 	  render: function render() {
 	    return React.createElement(Board, { gameOver: this.gameOver, rowCount: this.state.numRows,
